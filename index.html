@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quantum Run | Jogo Futurista</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            QUANTUM<span>RUN</span>
+        </div>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#jogo">Jogar</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= INÍCIO ================= -->
+
+    <section id="inicio" class="hero">
+
+        <div class="hero-text">
+
+            <p class="tag">
+                ⚡ DESAFIO DO FUTURO
+            </p>
+
+            <h1>
+                QUANTO TEMPO<br>
+                VOCÊ CONSEGUE<br>
+                <span>SOBREVIVER?</span>
+            </h1>
+
+            <p class="hero-description">
+                Desvie dos inimigos, colete energia e tente
+                alcançar a maior pontuação possível.
+            </p>
+
+            <button
+                class="btn"
+                onclick="irParaJogo()">
+
+                ▶ JOGAR AGORA
+
+            </button>
+
+        </div>
+
+
+        <div class="hero-game">
+
+            <div class="glow"></div>
+
+            <div class="player-preview">
+                ◆
+            </div>
+
+            <div class="preview-energy">
+                ✦
+            </div>
+
+            <div class="preview-enemy">
+                ●
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SOBRE ================= -->
+
+    <section id="sobre" class="section">
+
+        <p class="tag">
+            🎮 SOBRE O JOGO
+        </p>
+
+        <h2>
+            ENTRE NO <span>QUANTUM</span>
+        </h2>
+
+        <p class="description">
+            Quantum Run é um jogo de sobrevivência baseado em
+            velocidade, reflexos e estratégia.
+        </p>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    COLETE ENERGIA
+                </h3>
+
+                <p>
+                    Pegue as partículas para aumentar
+                    sua pontuação.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    ☠
+                </div>
+
+                <h3>
+                    FUJA DOS INIMIGOS
+                </h3>
+
+                <p>
+                    Não deixe os inimigos encostarem
+                    em você.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🏆
+                </div>
+
+                <h3>
+                    BATA O RECORDE
+                </h3>
+
+                <p>
+                    Sobreviva o máximo possível e
+                    supere sua marca.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= JOGO ================= -->
+
+    <section id="jogo" class="game-section">
+
+        <p class="tag">
+            🕹️ QUANTUM RUN
+        </p>
+
+        <h2>
+            ESCOLHA SEU <span>NÍVEL</span>
+        </h2>
+
+        <p class="description">
+            Escolha a dificuldade e descubra até onde
+            você consegue chegar.
+        </p>
+
+
+        <!-- ================= NÍVEIS ================= -->
+
+        <div id="levelMenu" class="level-menu">
+
+
+            <!-- NÍVEL 1 -->
+
+            <div class="level-card easy">
+
+                <div class="level-icon">
+                    🟢
+                </div>
+
+                <h3>
+                    NÍVEL 1
+                </h3>
+
+                <h4>
+                    FÁCIL
+                </h4>
+
+                <p>
+                    Ideal para começar.
+                    Inimigos mais lentos e menos frequentes.
+                </p>
+
+                <div class="difficulty">
+                    Dificuldade: ★☆☆
+                </div>
+
+                <button
+                    class="level-button"
+                    onclick="selecionarNivel(1)">
+
+                    JOGAR
+
+                </button>
+
+            </div>
+
+
+            <!-- NÍVEL 2 -->
+
+            <div class="level-card medium">
+
+                <div class="level-icon">
+                    🟡
+                </div>
+
+                <h3>
+                    NÍVEL 2
+                </h3>
+
+                <h4>
+                    MÉDIO
+                </h4>
+
+                <p>
+                    Os inimigos ficam mais rápidos
+                    e aparecem com maior frequência.
+                </p>
+
+                <div class="difficulty">
+                    Dificuldade: ★★☆
+                </div>
+
+                <button
+                    class="level-button"
+                    onclick="selecionarNivel(2)">
+
+                    JOGAR
+
+                </button>
+
+            </div>
+
+
+            <!-- NÍVEL 3 -->
+
+            <div class="level-card hard">
+
+                <div class="level-icon">
+                    🔴
+                </div>
+
+                <h3>
+                    NÍVEL 3
+                </h3>
+
+                <h4>
+                    INSANO
+                </h4>
+
+                <p>
+                    Para quem realmente gosta de desafios.
+                    Muitos inimigos e alta velocidade.
+                </p>
+
+                <div class="difficulty">
+                    Dificuldade: ★★★
+                </div>
+
+                <button
+                    class="level-button"
+                    onclick="selecionarNivel(3)">
+
+                    JOGAR
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= ÁREA DO JOGO ================= -->
+
+        <div
+            id="gameArea"
+            class="game-container">
+
+
+            <!-- INFORMAÇÕES -->
+
+            <div class="game-info">
+
+
+                <div class="info-box">
+
+                    <small>
+                        PONTOS
+                    </small>
+
+                    <strong id="score">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <small>
+                        VIDAS
+                    </small>
+
+                    <strong id="lives">
+                        ❤️❤️❤️
+                    </strong>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <small>
+                        NÍVEL
+                    </small>
+
+                    <strong id="currentLevel">
+                        FÁCIL
+                    </strong>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <small>
+                        RECORDE
+                    </small>
+
+                    <strong id="highScore">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- CANVAS -->
+
+            <div class="canvas-wrapper">
+
+                <canvas id="gameCanvas"></canvas>
+
+            </div>
+
+
+            <!-- CONTROLES -->
+
+            <div class="game-controls">
+
+                <p>
+                    🎮 Use
+                    <strong>W A S D</strong>
+                    ou as
+                    <strong>SETAS</strong>
+                    para movimentar.
+                </p>
+
+
+                <div class="control-buttons">
+
+                    <button
+                        id="restartButton"
+                        onclick="reiniciarJogo()">
+
+                        ↻ REINICIAR
+
+                    </button>
+
+
+                    <button
+                        id="backButton"
+                        onclick="voltarNiveis()">
+
+                        ← ESCOLHER OUTRO NÍVEL
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= RODAPÉ ================= -->
+
+    <footer>
+
+        <div class="logo">
+            QUANTUM<span>RUN</span>
+        </div>
+
+        <p>
+            Desenvolvido para projeto escolar • 2026
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
