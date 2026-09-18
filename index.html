@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Run | Jogo Futurista</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="logo">QUANTUM<span>RUN</span></div>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#skins">Skins</a>
+            <a href="#jogo">Jogar</a>
+        </nav>
+
+        <div class="coin-display">
+            <span class="coin-icon">🪙</span>
+            <span id="coinCount">0</span>
+        </div>
+    </header>
+
+
+    <!-- ================= INÍCIO ================= -->
+    <section id="inicio" class="hero">
+        <div class="hero-text">
+            <p class="tag">⚡ DESAFIO DO FUTURO</p>
+
+            <h1>
+                QUANTO TEMPO<br>
+                VOCÊ CONSEGUE<br>
+                <span>SOBREVIVER?</span>
+            </h1>
+
+            <p class="hero-description">
+                Desvie dos inimigos, colete energia, ganhe moedas
+                e personalize seu personagem!
+            </p>
+
+            <button class="btn" onclick="irParaJogo()">▶ JOGAR AGORA</button>
+        </div>
+
+        <div class="hero-game">
+            <div class="glow"></div>
+            <div class="player-preview">◆</div>
+            <div class="preview-energy">✦</div>
+            <div class="preview-enemy">●</div>
+        </div>
+    </section>
+
+
+    <!-- ================= SOBRE ================= -->
+    <section id="sobre" class="section">
+        <p class="tag">🎮 SOBRE O JOGO</p>
+        <h2>ENTRE NO <span>QUANTUM</span></h2>
+        <p class="description">
+            Quantum Run é um jogo de sobrevivência com dificuldade
+            progressiva, moedas e skins personalizáveis.
+        </p>
+
+        <div class="cards">
+            <div class="card">
+                <div class="icon">⚡</div>
+                <h3>COLETE ENERGIA</h3>
+                <p>Cada 25 pontos ganhos = 1 moeda para comprar skins.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">❤️</div>
+                <h3>RECUPERE VIDA</h3>
+                <p>Corações aparecem periodicamente no mapa. Colete para ganhar +1 vida!</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>PERSONALIZE</h3>
+                <p>Mais de 20 skins — de cores simples a dragões e heróis lendários.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= SKINS ================= -->
+    <section id="skins" class="section skins-section">
+        <p class="tag">🎨 PERSONALIZAÇÃO</p>
+        <h2>LOJA DE <span>SKINS</span></h2>
+        <p class="description">
+            Use suas moedas para comprar skins e personalize seu personagem!
+        </p>
+
+        <div class="skin-tabs">
+            <button class="skin-tab active" onclick="mostrarAba('jogador')">🎮 Jogador</button>
+            <button class="skin-tab" onclick="mostrarAba('inimigo')">👾 Inimigos</button>
+        </div>
+
+        <!-- Skins do Jogador -->
+        <div id="skinsJogador" class="skins-grid">
+
+            <div class="skin-card" data-skin="default" data-price="0">
+                <div class="skin-preview"><div class="preview-player default"></div></div>
+                <h4>Padrão</h4>
+                <p class="skin-price">Grátis</p>
+                <button class="skin-btn owned" onclick="comprarOuUsar('jogador', 'default', 0)">USAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="red" data-price="50">
+                <div class="skin-preview"><div class="preview-player red"></div></div>
+                <h4>Vermelho</h4>
+                <p class="skin-price">🪙 50</p>
+                <button class="skin-btn" onclick="comprarOuUsar('jogador', 'red', 50)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="green" data-price="50">
+                <div class="skin-preview"><div class="preview-player green"></div></div>
+                <h4>Verde</h4>
+                <p class="skin-price">🪙 50</p>
+                <button class="skin-btn" onclick="comprarOuUsar('jogador', 'green', 50)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="purple" data-price="75">
+                <div class="skin-preview"><div class="preview-player purple"></div></div>
+                <h4>Roxo</h4>
+                <p class="skin-price">🪙 75</p>
+                <button class="skin-btn" onclick="comprarOuUsar('jogador', 'purple', 75)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="gold" data-price="100">
+                <div class="skin-preview"><div class="preview-player gold"></div></div>
+                <h4>Dourado</h4>
+                <p class="skin-price">🪙 100</p>
+                <button class="skin-btn" onclick="comprarOuUsar('jogador', 'gold', 100)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="hat" data-price="150">
+                <div class="skin-preview">
+                    <div class="preview-player default"></div>
+                    <div class="preview-accessory">🎩</div>
+                </div>
+                <h4>Chapéu</h4>
+                <p class="skin-price">🪙 150</p>
+                <button class="skin-btn" onclick="comprarOuUsar('jogador', 'hat', 150)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="sunglasses" data-price="150">
+                <div class="skin-preview">
+                    <div class="preview-player default"></div>
+                    <div class="preview-accessory">🕶️</div>
+                </div>
+                <h4>Óculos Escuros</h4>
+                <p class="skin-price">🪙 150</p>
+                <button class="skin-btn" onclick="comprarOuUsar('jogador', 'sunglasses', 150)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="cap" data-price="150">
+                <div class="skin-preview">
+                    <div class="preview-player default"></div>
+                    <div class="preview-accessory">🧢</div>
+                </div>
+                <h4>Boné</h4>
+                <p class="skin-price">🪙 150</p>
+                <button class="skin-btn" onclick="comprarOuUsar('jogador', 'cap', 150)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="brasil" data-price="200">
+                <div class="skin-preview">
+                    <div class="preview-player brasil"></div>
+                    <div class="preview-accessory">🇧🇷</div>
+                </div>
+                <h4>Brasil</h4>
+                <p class="skin-price">🪙 200</p>
+                <button class="skin-btn" onclick="comprarOuUsar('jogador', 'brasil', 200)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="eua" data-price="200">
+                <div class="skin-preview">
+                    <div class="preview-player eua"></div>
+                    <div class="preview-accessory">🇺🇸</div>
+                </div>
+                <h4>EUA</h4>
+                <p class="skin-price">🪙 200</p>
+                <button class="skin-btn" onclick="comprarOuUsar('jogador', 'eua', 200)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="japao" data-price="200">
+                <div class="skin-preview">
+                    <div class="preview-player japao"></div>
+                    <div class="preview-accessory">🇯🇵</div>
+                </div>
+                <h4>Japão</h4>
+                <p class="skin-price">🪙 200</p>
+                <button class="skin-btn" onclick="comprarOuUsar('jogador', 'japao', 200)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card legendary" data-skin="dragon" data-price="1000">
+                <div class="skin-preview"><div class="preview-player dragon">🐉</div></div>
+                <h4>🐉 Dragão Lendário</h4>
+                <p class="skin-price">🪙 1000</p>
+                <button class="skin-btn legendary-btn" onclick="comprarOuUsar('jogador', 'dragon', 1000)">COMPRAR</button>
+            </div>
+
+        </div>
+
+        <!-- Skins dos Inimigos -->
+        <div id="skinsInimigo" class="skins-grid" style="display: none;">
+
+            <div class="skin-card" data-skin="default" data-price="0">
+                <div class="skin-preview"><div class="preview-enemy default"></div></div>
+                <h4>Padrão</h4>
+                <p class="skin-price">Grátis</p>
+                <button class="skin-btn owned" onclick="comprarOuUsar('inimigo', 'default', 0)">USAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="green" data-price="50">
+                <div class="skin-preview"><div class="preview-enemy green"></div></div>
+                <h4>Verde</h4>
+                <p class="skin-price">🪙 50</p>
+                <button class="skin-btn" onclick="comprarOuUsar('inimigo', 'green', 50)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="purple" data-price="75">
+                <div class="skin-preview"><div class="preview-enemy purple"></div></div>
+                <h4>Roxo</h4>
+                <p class="skin-price">🪙 75</p>
+                <button class="skin-btn" onclick="comprarOuUsar('inimigo', 'purple', 75)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="orange" data-price="100">
+                <div class="skin-preview"><div class="preview-enemy orange"></div></div>
+                <h4>Laranja</h4>
+                <p class="skin-price">🪙 100</p>
+                <button class="skin-btn" onclick="comprarOuUsar('inimigo', 'orange', 100)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="robot" data-price="200">
+                <div class="skin-preview"><div class="preview-enemy robot">🤖</div></div>
+                <h4>Robô</h4>
+                <p class="skin-price">🪙 200</p>
+                <button class="skin-btn" onclick="comprarOuUsar('inimigo', 'robot', 200)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="alien" data-price="300">
+                <div class="skin-preview"><div class="preview-enemy alien">👽</div></div>
+                <h4>Alienígena</h4>
+                <p class="skin-price">🪙 300</p>
+                <button class="skin-btn" onclick="comprarOuUsar('inimigo', 'alien', 300)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card" data-skin="skull" data-price="400">
+                <div class="skin-preview"><div class="preview-enemy skull">💀</div></div>
+                <h4>Caveira</h4>
+                <p class="skin-price">🪙 400</p>
+                <button class="skin-btn" onclick="comprarOuUsar('inimigo', 'skull', 400)">COMPRAR</button>
+            </div>
+
+            <div class="skin-card legendary" data-skin="hero" data-price="1000">
+                <div class="skin-preview"><div class="preview-enemy hero">⚔️</div></div>
+                <h4>⚔️ Herói Lendário</h4>
+                <p class="skin-price">🪙 1000</p>
+                <button class="skin-btn legendary-btn" onclick="comprarOuUsar('inimigo', 'hero', 1000)">COMPRAR</button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= JOGO ================= -->
+    <section id="jogo" class="game-section">
+        <p class="tag">🕹️ QUANTUM RUN</p>
+        <h2>ESCOLHA SEU <span>NÍVEL</span></h2>
+        <p class="description">
+            A dificuldade aumenta conforme você sobrevive. Boa sorte!
+        </p>
+
+        <div id="levelMenu" class="level-menu">
+
+            <div class="level-card easy">
+                <div class="level-icon">🟢</div>
+                <h3>NÍVEL 1</h3>
+                <h4>FÁCIL</h4>
+                <p>Ideal para começar. Velocidade máxima moderada.</p>
+                <div class="difficulty">Dificuldade: ★☆☆</div>
+                <button class="level-button" onclick="selecionarNivel(1)">JOGAR</button>
+            </div>
+
+            <div class="level-card medium">
+                <div class="level-icon">🟡</div>
+                <h3>NÍVEL 2</h3>
+                <h4>MÉDIO</h4>
+                <p>Inimigos mais rápidos e aceleração maior.</p>
+                <div class="difficulty">Dificuldade: ★★☆</div>
+                <button class="level-button" onclick="selecionarNivel(2)">JOGAR</button>
+            </div>
+
+            <div class="level-card hard">
+                <div class="level-icon">🔴</div>
+                <h3>NÍVEL 3</h3>
+                <h4>INSANO</h4>
+                <p>Para quem realmente gosta de desafios.</p>
+                <div class="difficulty">Dificuldade: ★★★</div>
+                <button class="level-button" onclick="selecionarNivel(3)">JOGAR</button>
+            </div>
+
+        </div>
+
+        <div id="gameArea" class="game-container">
+
+            <div class="game-info">
+                <div class="info-box">
+                    <small>PONTOS</small>
+                    <strong id="score">0</strong>
+                </div>
+
+                <div class="info-box">
+                    <small>VIDAS</small>
+                    <strong id="lives">❤️❤️❤️</strong>
+                </div>
+
+                <div class="info-box">
+                    <small>NÍVEL</small>
+                    <strong id="currentLevel">FÁCIL</strong>
+                </div>
+
+                <div class="info-box">
+                    <small>RECORDE</small>
+                    <strong id="highScore">0</strong>
+                </div>
+            </div>
+
+            <div class="canvas-wrapper">
+                <canvas id="gameCanvas"></canvas>
+            </div>
+
+            <div class="game-controls">
+                <p>
+                    🎮 Use <strong>W A S D</strong> ou as <strong>SETAS</strong> para movimentar.
+                </p>
+
+                <div class="control-buttons">
+                    <button id="restartButton" onclick="reiniciarJogo()">↻ REINICIAR</button>
+                    <button id="backButton" onclick="voltarNiveis()">← ESCOLHER OUTRO NÍVEL</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= RODAPÉ ================= -->
+    <footer>
+        <div class="logo">QUANTUM<span>RUN</span></div>
+        <p>Desenvolvido para projeto escolar • 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
